@@ -19,7 +19,9 @@
 
     function createCustomer(img, name, text) {
 
-        let fullImg = `./img/customer-${img}.jpg`
+        // let fullImg = `../img/customer-${img}.jpg`
+        let fullImg = './img/customer-' + img + '.jpg';
+
         let customer = new Customer(fullImg, name, text)
 
         customers.push(customer)
@@ -35,7 +37,7 @@
 
     buttons.forEach(function(button){
         button.addEventListener('click', function(e){
-            if (e.target.parentElement.classList.contains('prevBtn')){
+            if (button.classList.contains('prevBtn')){
                if(index === 0){
                     index = customers.length
                }
@@ -44,11 +46,12 @@
                customerName.textContent = customers[index].name
                customerText.textContent = customers[index].text
             }
-            if (e.target.parentElement.classList.contains('nextBtn')){
-                index++
+            if (button.classList.contains('nextBtn')){
                 if(index === customers.length){
                      index = 0
                 }
+                index++
+
                 customerImage.src = customers[index].img
                 customerName.textContent = customers[index].name
                 customerText.textContent = customers[index].text
@@ -57,3 +60,4 @@
     })
     
 })()
+
